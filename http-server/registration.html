@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>REGISTRATION FORM </h2>
+    <form id="registrationForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        minlength="8"
+        required
+      />
+
+      <label>
+        <input type="checkbox" id="terms" name="terms" required />
+        I accept the terms and conditions
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <table id="dataTable">
+      <thead><h2>ENTRIES</h2>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Dob</th>
+          <th>Password</th>
+          <th>Accepted terms?</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="index.js"></script>
+  
+  </body>
+  
+</html>
