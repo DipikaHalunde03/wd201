@@ -33,10 +33,10 @@ http
     let url = request.url;
     response.writeHeader(200, { "Content-Type": "text/html" });
     switch (url) {
-      case "/project":
-        response.write(projectContent);
-        response.end();
-        break;
+      // case "/project":
+      //   response.write(projectContent);
+      //   response.end();
+      //   break;
 
       case "/registration":
         response.write(registrationContent);
@@ -48,5 +48,13 @@ http
         response.end();
         break;
     }
+
+    server.on("error", (err) => {
+      console.error("Server error:", err);
+    });
+    
   })
   .listen(5000);
+
+ 
+  
