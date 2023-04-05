@@ -8,37 +8,46 @@ const todoList = () => {
   }
 
   const overdue = () => {
-    const now = new Date()
-    return all.filter(item => new Date(item.dueDate) < now && !item.completed)
+    const overdueItems = all.filter(todo => {
+      return todo.dueDate < today && !todo.completed;
+    });
+    return overdueItems;
   }
+  
 
   const dueToday = () => {
-    const today = new Date().toISOString().split("T")[0]
-    return all.filter(item => item.dueDate === today && !item.completed)
+    return all.filter((item) => {
+      let dueDate = formattedDate(new Date(item.dueDate))
+      return dueDate === today
+    })
   }
+  
 
+  
   const dueLater = () => {
-    const now = new Date()
-    return all.filter(item => new Date(item.dueDate) > now && !item.completed)
+    return all.filter((item) => {
+      let dueDate = formattedDate(new Date(item.dueDate))
+      return dueDate > today
+    })
   }
+  
 
   const toDisplayableList = (list) => {
-    let displayableList = ''
-    list.forEach((item, index) => {
-      let displayableIndex = index + 1 + '.'
-      let displayableTitle = item.title
-      let displayableDate = ''
-      if (item.dueDate !== new Date().toISOString().split("T")[0]) {
-        displayableDate = ' (' + new Date(item.dueDate).toISOString().split("T")[0] + ')'
+    let output = ""
+    list.forEach((item) => {
+      let checkbox = item.completed ? "[x]" : "[ ]"
+      let dueDate = formattedDate(new Date(item.dueDate))
+      if (dueDate === today) {
+        dueDate = ""
+      } else {
+        dueDate = " " + dueDate
       }
-      if (item.dueDate === new Date().toISOString().split("T")[0]) {
-        displayableDate = ''
-      }
-      let displayableStatus = item.completed ? '[x]' : '[ ]'
-      displayableList += `${displayableIndex} ${displayableTitle}${displayableDate} ${displayableStatus}\n`
+      output += `${checkbox} ${item.title}${dueDate}\n`
     })
-    return displayableList
+    return output
   }
+  
+  
 
   return {
     all,
